@@ -19,8 +19,8 @@ functionEntryPoint:
 
 # How does it work
 - Basic system routines are implemented in **KERNEL** (non-user mode, potentially ring 0),
-- user code (ring 4) calls them using [SYSCALL](https://www.felixcloutier.com/x86/syscall) (64-bit) or [INT xx](https://www.felixcloutier.com/x86/intn:into:int3:int1) (older 32-bit) opcodes),
-- due to above, many low-level functions in user mode are a **DUMP WRAPPERS** to syscall opcode with function ID passed in RAX register.
+- user code (ring 4) calls them using [SYSCALL](https://www.felixcloutier.com/x86/syscall) (64-bit OS) or [INT xx](https://www.felixcloutier.com/x86/intn:into:int3:int1) (older 32-bit OS) opcodes,
+- due to above, many low-level functions in user mode are a **DUMB WRAPPERS** to syscall opcode with function ID passed in RAX register.
 
 # How to use syscall in my code
 - To call system routine via syscall on 64-bit Windows (x86-64, AMD64) you can use below code:
