@@ -1,7 +1,7 @@
 # Syscall-dump (64-bit)
 Dump syscall numbers assigned to NtXxx() routines exported by NTDLL.DLL library.
 
-# What does it do
+# What does it do?
 - Load NTDLL.DLL library,
 - finds its [exports table](https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#the-edata-section-image-only),
 - process each exported functions one-by-one and search for below code pattern at their entry-points:
@@ -17,12 +17,12 @@ functionEntryPoint:
 ```
 - if pattern code matched, then read xx xx xx xx DWORD (4 bytes) value - it's a **SYSCALL ID** used on your OS.
 
-# How does it work
+# How does it work?
 - Basic system routines are implemented in **KERNEL CODE** (non-user mode, ring 0),
 - **USER CODE** (ring 4) calls them using [SYSCALL](https://www.felixcloutier.com/x86/syscall) (64-bit OS) or [INT xx](https://www.felixcloutier.com/x86/intn:into:int3:int1) (older 32-bit OS) opcodes,
 - due to above, many low-level functions in user mode are a **DUMB WRAPPERS** to syscall opcode with function ID passed in RAX register.
 
-# How to use syscall in my code
+# How can I use syscall in my code?
 - To call system routine via syscall on 64-bit Windows (x86-64, AMD64) you can use below code:
 ```
 mov r10, <first param> ; r10 = 1st param, rcx cannot be used with syscall api
