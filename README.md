@@ -7,14 +7,15 @@ Dump syscall id-s assigned to NtXxx() routines exported by NTDLL.DLL library.
 - process each exported functions one-by-one and search for below code pattern at their entry-points:
 
 ```
-4c 8b d1                | mov r10, rcx
-b8 xx xx xx xx          | mov eax, <syscall id>
-f6 04 25 yy yy yy yy zz | test byte [yy yy yy yy], zz
-75 03                   | jnz +3
-0f 05                   | syscall
-c3                      | ret
+functionEntryPoint:
+  4c 8b d1                | mov r10, rcx
+  b8 xx xx xx xx          | mov eax, <syscall id>
+  f6 04 25 yy yy yy yy zz | test byte [yy yy yy yy], zz
+  75 03                   | jnz +3
+  0f 05                   | syscall
+  c3                      | ret
 ```
-- if pattern code matched, then read xx xx xx xx DWORD (4 bytes) from the code - it's a **SYSCALL ID** used on your OS.
+- if pattern code matched, then read xx xx xx xx DWORD (4 bytes) value - it's a **SYSCALL ID** used on your OS.
 
 # How does it work
 - Basic system routines are implemented in **KERNEL** (non-user mode, potentially ring 0),
