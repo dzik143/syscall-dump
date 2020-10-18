@@ -1,6 +1,13 @@
 # Syscall-dump (64-bit)
 Dump syscall numbers assigned to NtXxx() routines exported by NTDLL.DLL library.
 
+# Download
+  - [binary prebuild (x86-64, Windows 7/8/10)](prebuild/syscall-dump.exe) (md5 9d38d07ab8ff09a89e7fe6e81ad6d144)
+  - source code: 
+  ```
+    git clone https://github.com/dzik143/syscall-dump
+  ```
+
 # What does it do?
 - Load NTDLL.DLL library,
 - finds its [exports table](https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#the-edata-section-image-only),
