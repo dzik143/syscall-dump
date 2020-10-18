@@ -1,5 +1,5 @@
 # Syscall-dump (64-bit)
-Dump syscall id-s assigned to NtXxx() routines exported by NTDLL.DLL library.
+Dump syscall numbers assigned to NtXxx() routines exported by NTDLL.DLL library.
 
 # What does it do
 - Load NTDLL.DLL library,
@@ -18,8 +18,8 @@ functionEntryPoint:
 - if pattern code matched, then read xx xx xx xx DWORD (4 bytes) value - it's a **SYSCALL ID** used on your OS.
 
 # How does it work
-- Basic system routines are implemented in **KERNEL** (non-user mode, potentially ring 0),
-- user code (ring 4) calls them using [SYSCALL](https://www.felixcloutier.com/x86/syscall) (64-bit OS) or [INT xx](https://www.felixcloutier.com/x86/intn:into:int3:int1) (older 32-bit OS) opcodes,
+- Basic system routines are implemented in **KERNEL CODE** (non-user mode, potentially ring 0),
+- **USER CODE** (ring 4) calls them using [SYSCALL](https://www.felixcloutier.com/x86/syscall) (64-bit OS) or [INT xx](https://www.felixcloutier.com/x86/intn:into:int3:int1) (older 32-bit OS) opcodes,
 - due to above, many low-level functions in user mode are a **DUMB WRAPPERS** to syscall opcode with function ID passed in RAX register.
 
 # How to use syscall in my code
