@@ -2,8 +2,8 @@
 Dump syscall numbers assigned to NtXxx() routines exported by NTDLL.DLL library.
 
 # Download
-  - [binary prebuild (x86-64, Windows 7/8/10)](https://github.com/dzik143/syscall-dump/raw/master/prebuild/syscall-dump.exe) (md5 9d38d07ab8ff09a89e7fe6e81ad6d144)
-  - source code: 
+  - [binary prebuild v.1.1.20201019 (x86-64, Windows 7/8/10)](https://github.com/dzik143/syscall-dump/raw/master/prebuild/syscall-dump.exe) (md5 32a1ab93ab98eb801ad189a2c88dc07f)
+  - source code:
   ```
     git clone https://github.com/dzik143/syscall-dump
   ```
@@ -33,7 +33,7 @@ functionEntryPoint:
 - To call system routine via syscall on 64-bit Windows (x86-64, AMD64) you can use below code:
 ```
 mov r10, <first param> ; r10 = 1st param, rcx cannot be used with syscall api
-...                    ; 
+...                    ;
 mov eax, <syscall id>  ; eax = routine id to be execute
 syscall                ; call kernel routine
 ```
